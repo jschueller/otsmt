@@ -12,7 +12,7 @@ Requirements
 - numpy
 - python >= 3.7
 - openturns >= 1.19
-- smt >= 1.2.0
+- smt = 1.1.0
 
 Documentation
 =============
