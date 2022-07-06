@@ -2,12 +2,11 @@
 
 
 import numpy as np
-import openturns as ot
 import pytest
 from smt.surrogate_models import LS
 from smt.sampling_methods import LHS
 from smt.problems import Sphere    
-import smt2ot
+import otsmt
 # Construction of the DOE
 fun = Sphere(ndim=2)
 sampling = LHS(xlimits=fun.xlimits, criterion="m")
@@ -31,7 +30,7 @@ def test_LS():
     sm_ls.train()
     
     
-    otls = smt2ot.smt2ot(sm_ls)
+    otls = otsmt.smt2ot(sm_ls)
     otlsprediction = otls.getPredictionFunction()
     yv = otlsprediction(xv)
     assert yv[0][0]== pytest.approx(56.9874,abs=1e-4)
