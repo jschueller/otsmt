@@ -7,7 +7,7 @@
     Interpret smt algorithms as openturns Functions
 """
 
-import openturns.PythonFunction as 
+import openturns.PythonFunction as PythonFunction
 
 class smt2ot(object):
     """
