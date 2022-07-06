@@ -1,6 +1,6 @@
 """
-Example 3: Use of AK - SS on four branch function
--------------------------------------------------
+Use of Least Squares Surrogate Model
+----------------------------------------------
 """
 
 # %%
@@ -8,7 +8,7 @@ Example 3: Use of AK - SS on four branch function
 from smt.sampling_methods import LHS
 from smt.problems import Sphere
 
-import smt2ot
+import otsmt
 
 
 # %%
@@ -35,7 +35,7 @@ sm_ls.train()
 
 # %%
 # | Creation of OpenTurns PythonFunction for prediction
-otls = smt2ot.smt2ot(sm_ls)
+otls = otsmt.smt2ot(sm_ls)
 otlsprediction = otls.getPredictionFunction()
 
 print('Predicted values by LS:',otlsprediction(xv))

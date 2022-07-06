@@ -6,12 +6,14 @@
 ot-smt documentation
 ====================
 
-.. image:: _static/AK_methods.png
+.. image:: _static/krg_Test_test_krg.png
      :align: left
      :scale: 50%
 	 
-otsmt is a module of OpenTURNS implementing some methods to bind surrogate models from smt into OpenTURNS PythonFunctions.
+otSMT is a module of OpenTURNS implementing some methods to bind surrogate models from `SMT <https://smt.readthedocs.io/en/latest/>`_ into OpenTURNS PythonFunctions.
+
 Available surrogate models from SMT: 
+
 - Least Squares Model
 - Neural Network Model
 - Radial Basis Function
@@ -25,15 +27,17 @@ Available surrogate models from SMT:
 - Mixtures of Experts
 
 Available multifidelity surrogate models from SMT:
+
 - Multi-Fidelity Kriging 
 - Multi-Fidelity KPLS   
 - Multi-Fidelity KPLSK  
 
 Available mixed-variables surrogate models from SMT: 
+
 - Mixed Integer Kriging with Continuous Relaxation
 - Mixed Integer Kriging with Gower Distance
 
-
+Documentation about SMT can be found `here <https://smt.readthedocs.io/en/latest/>`_
 
 User documentation
 ------------------

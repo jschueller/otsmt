@@ -52,7 +52,7 @@ class smt2ot(object):
     
     def getConditionalVarianceFunction(self):
         """
-        Function retrieving ConditionalVarianceFunction for  smt model
+        Function retrieving ConditionalVarianceFunction for  smt model (when available)
         
         """
 
@@ -66,7 +66,7 @@ class smt2ot(object):
     
     def getPredictionDerivativesFunction(self,indexDerivatives):
         """
-        Function retrieving predicted prediction derivatives of smt model 
+        Function retrieving predicted derivatives function  of smt model (when available)
         
         """
 

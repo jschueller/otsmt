@@ -30,11 +30,11 @@ setup(
     long_description=open('README.rst').read(),
 	
     setup_requires=['pytest-runner',
-		    'cython'],
+	'cython'],
     
     install_requires=['numpy',
                       'openturns',
-		      'smt'],
+					  'smt'],
     tests_require=['pytest'],
 
 )
