@@ -33,7 +33,7 @@ setup(
     
     install_requires=['numpy',
                       'openturns',
-		      'cython',
+		      'Cython',
 					  'smt'],
     tests_require=['pytest'],
 
