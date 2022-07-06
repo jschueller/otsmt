@@ -7,7 +7,7 @@
     Interpret smt algorithms as openturns Functions
 """
 
-import openturns.PythonFunction as PythonFunction
+import openturns as ot
 
 class smt2ot(object):
     """
@@ -42,7 +42,7 @@ class smt2ot(object):
 
         # definition of ot PythonFunction for predicted responses
         smtMean = lambda x:self.smtModel.predict_values(np.array(x))
-        PredictionFunction = PythonFunction(self.inputDimension,1,func_sample=smtMean)
+        PredictionFunction = ot.PythonFunction(self.inputDimension,1,func_sample=smtMean)
 
         return PredictionFunction
 
@@ -56,7 +56,7 @@ class smt2ot(object):
 
         # definition of ot PythonFunction for predicted response variances
         smtVariance = lambda x:self.smtModel.predict_variances(np.array(x))
-        ConditionalVarianceFunction = PythonFunction(self.inputDimension,1,func_sample=smtVariance)
+        ConditionalVarianceFunction = ot.PythonFunction(self.inputDimension,1,func_sample=smtVariance)
 
         return ConditionalVarianceFunction
     
@@ -69,7 +69,7 @@ class smt2ot(object):
 
         # definition of ot PythonFunction for predicted response variances
         smtMeanDerivatives = lambda x:self.smtModel.predict_derivatives(np.array(x),indexDerivatives)
-        PredictionDerivativesFunction = PythonFunction(self.inputDimension,1,func_sample=smtMeanDerivatives)
+        PredictionDerivativesFunction = ot.PythonFunction(self.inputDimension,1,func_sample=smtMeanDerivatives)
 
         return PredictionDerivativesFunction
             
