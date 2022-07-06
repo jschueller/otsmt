@@ -3,6 +3,7 @@
  
 from setuptools import setup, find_packages
 import sys
+import Cython
 
 # Get the version from __init__.py
 with open('otsmt/__init__.py') as fid:
@@ -33,8 +34,7 @@ setup(
     
     install_requires=['numpy',
                       'openturns',
-		      'Cython',
-					  'smt'],
+		      'smt'],
     tests_require=['pytest'],
 
 )
