@@ -20,7 +20,6 @@ for i in range(2):
     
 xv= sampling(2)
 
-
 """
 Test for Least Squares Model
 """
