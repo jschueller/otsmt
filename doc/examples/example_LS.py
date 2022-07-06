@@ -7,8 +7,9 @@ Use of Least Squares Surrogate Model
 
 from smt.sampling_methods import LHS
 from smt.problems import Sphere
-
+import numpy as np
 import otsmt
+from smt.surrogate_models import LS
 
 
 # %%
@@ -26,7 +27,8 @@ for i in range(2):
     yt = np.concatenate((yt, yd), axis=1)
        
 xv= sampling(10)
-    
+
+print(xv)
 # %%
 # | Training of smt model for Least Squares
 sm_ls = LS()

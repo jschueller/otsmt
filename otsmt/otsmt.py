@@ -8,7 +8,7 @@
 """
 
 import openturns as ot
-
+import numpy as np
 class smt2ot(object):
     """
     Define a OpenTURNS class using Machine learning algorithms from smt.
