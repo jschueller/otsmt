@@ -33,6 +33,7 @@ setup(
     setup_requires=['pytest-runner'],
     
     install_requires=['numpy',
+		      'Cython',
                       'openturns',
 		      'smt'],
     tests_require=['pytest'],
