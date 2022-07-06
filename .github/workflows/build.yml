@@ -14,14 +14,15 @@ jobs:
           conda install -y openturns pytest sphinx sphinx-gallery numpydoc pandoc
           conda install -c conda-forge sphinx_rtd_theme
           python setup.py install
+          pytest
           sudo apt install -y texlive-latex-recommended texlive-fonts-recommended texlive-latex-extra
           make html -C doc
       - name: Upload
         if: ${{ github.ref == 'refs/heads/master' }}          
         run: |
           git clone --depth 1 https://${{ secrets.GH_TOKEN }}@github.com/m-balesdent/m-balesdent.github.io.git /tmp/io
-          mkdir -p /tmp/io/otak/master
-          cp -r doc/build/html/* /tmp/io/otak/master
+          mkdir -p /tmp/io/otsmt/master
+          cp -r doc/build/html/* /tmp/io/otsmt/master
           cd /tmp/io
           touch .nojekyll
           git config user.email "support@gh.com"
