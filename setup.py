@@ -31,8 +31,7 @@ setup(
 	
     setup_requires=['pytest-runner',
 	'cython',
-	'openturns',
-		   'ipopt'],
+	'openturns'],
     
     install_requires=['numpy',
 			'smt'],
