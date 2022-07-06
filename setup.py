@@ -29,7 +29,8 @@ setup(
     description="Class implementing bindings from smt to OpenTURNS",
     long_description=open('README.rst').read(),
 	
-    setup_requires=['pytest-runner'],
+    setup_requires=['pytest-runner',
+		    'cython'],
     
     install_requires=['numpy',
                       'openturns',
