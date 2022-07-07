@@ -1,14 +1,13 @@
 """
-Use of Least Squares Surrogate Model
-------------------------------------
+Use of Radial Basis Function
+----------------------------
 """
 
 # %%
 
 from smt.sampling_methods import LHS
 from smt.problems import Sphere
-from smt.surrogate_models import LS
-
+from smt.surrogate_models import RBF
 import numpy as np
 import otsmt
 
@@ -30,16 +29,15 @@ for i in range(2):
 xv= sampling(10)
     
 # %%
-# | Training of smt model for Least Squares
+# | Training of smt model for Radial Basis Function
 
-sm_ls = LS()
-sm_ls.set_training_values(xt, yt[:,0])
-sm_ls.train()
+sm_rbf = RBF()
+sm_rbf.set_training_values(xt, yt[:,0])
+sm_rbf.train()
 
 # %%
 # | Creation of OpenTurns PythonFunction for prediction
 
-otls = otsmt.smt2ot(sm_ls)
-otlsprediction = otls.getPredictionFunction()
-
-print('Predicted values by LS:',otlsprediction(xv))
+otrbf =  otsmt.smt2ot(sm_rbf)
+otrbfprediction = otrbf.getPredictionFunction()
+print('Predicted values by RBF:',otrbfprediction(xv))

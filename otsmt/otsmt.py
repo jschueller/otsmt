@@ -7,15 +7,18 @@
     Interpret smt algorithms as openturns Functions
 """
 
+
 import openturns as ot
 import numpy as np
+
+
 class smt2ot(object):
     """
     Define a OpenTURNS class using Machine learning algorithms from smt.
     
     Parameters
     ----------
-    model : an smt model
+    model : a trained smt model
         model for response surface, already trained/validated      
     """
     
@@ -49,7 +52,7 @@ class smt2ot(object):
     
     def getConditionalVarianceFunction(self):
         """
-        Function retrieving ConditionalVarianceFunction for  smt model (when available)
+        Function retrieving ConditionalVarianceFunction for  smt model (when available) 
         
         """
 
@@ -63,7 +66,9 @@ class smt2ot(object):
     
     def getPredictionDerivativesFunction(self,indexDerivatives):
         """
-        Function retrieving predicted derivatives function  of smt model (when available)
+        Function retrieving predicted  derivatives function  of smt model (when available)
+
+		:indexDerivatives: integer, coordinate of the derivative to be computed
         
         """
 

@@ -1,14 +1,13 @@
 """
-Use of Least Squares Surrogate Model
-------------------------------------
+Use of Second-order polynomial approximation
+--------------------------------------------
 """
 
 # %%
 
 from smt.sampling_methods import LHS
 from smt.problems import Sphere
-from smt.surrogate_models import LS
-
+from smt.surrogate_models import QP
 import numpy as np
 import otsmt
 
@@ -30,16 +29,15 @@ for i in range(2):
 xv= sampling(10)
     
 # %%
-# | Training of smt model for Least Squares
+# | Training of smt model for Second-order polynomial approximation
 
-sm_ls = LS()
-sm_ls.set_training_values(xt, yt[:,0])
-sm_ls.train()
+sm_qp = QP()
+sm_qp.set_training_values(xt, yt[:,0])
+sm_qp.train() 
 
 # %%
 # | Creation of OpenTurns PythonFunction for prediction
 
-otls = otsmt.smt2ot(sm_ls)
-otlsprediction = otls.getPredictionFunction()
-
-print('Predicted values by LS:',otlsprediction(xv))
+otqp =  otsmt.smt2ot(sm_qp)
+otqpprediction = otqp.getPredictionFunction()
+print('Predicted values by QP:',otqpprediction(xv))

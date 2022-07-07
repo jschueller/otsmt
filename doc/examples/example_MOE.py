@@ -1,14 +1,13 @@
 """
-Use of Least Squares Surrogate Model
-------------------------------------
+Use of Mixture of Experts
+-------------------------
 """
 
 # %%
 
 from smt.sampling_methods import LHS
 from smt.problems import Sphere
-from smt.surrogate_models import LS
-
+from smt.applications import MOE
 import numpy as np
 import otsmt
 
@@ -30,16 +29,15 @@ for i in range(2):
 xv= sampling(10)
     
 # %%
-# | Training of smt model for Least Squares
+# | Training of smt model for  Mixture of Experts
 
-sm_ls = LS()
-sm_ls.set_training_values(xt, yt[:,0])
-sm_ls.train()
+moe = MOE(n_clusters=2)
+moe.set_training_values(xt, yt[:,0][:,np.newaxis])
+moe.train()
 
 # %%
 # | Creation of OpenTurns PythonFunction for prediction
 
-otls = otsmt.smt2ot(sm_ls)
-otlsprediction = otls.getPredictionFunction()
-
-print('Predicted values by LS:',otlsprediction(xv))
+otmoe = otsmt.smt2ot(moe)
+otmoeprediction = otmoe.getPredictionFunction()
+print('Predicted values by MOE:',otmoeprediction(xv))   
