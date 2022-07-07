@@ -34,7 +34,8 @@ setup(
     
     install_requires=['numpy',
 			'smt',
-		     'openturns'],
+		     'openturns',
+			 'matplotlib'],
     tests_require=['pytest'],
 
 )
