@@ -10,15 +10,18 @@ from smt.problems import Sphere
 import otsmt
 # Construction of the DOE
 fun = Sphere(ndim=2)
-sampling = LHS(xlimits=fun.xlimits, criterion="m")
-xt = sampling(40)
+
+ot.RandomGenerator.SetSeed(0)
+experiment = ot.LHSExperiment(ot.ComposedDistribution([ot.Uniform(-10,10.),ot.Uniform(-10,10)]), 40, False, True)
+xt = np.array(experiment.generate())
 yt = fun(xt)
 # Compute the gradient
 for i in range(2):
     yd = fun(xt, kx=i)
     yt = np.concatenate((yt, yd), axis=1)
     
-xv= sampling(2)
+xv= np.array([[0.,0.]])
+
 
 """
 Test for Least Squares Model
@@ -33,4 +36,4 @@ def test_LS():
     otls = otsmt.smt2ot(sm_ls)
     otlsprediction = otls.getPredictionFunction()
     yv = otlsprediction(xv)
-    assert yv[0][0]== pytest.approx(56.9874,abs=1e-4)
+    assert yv[0][0]== pytest.approx(66.6975,abs=1e-4)
