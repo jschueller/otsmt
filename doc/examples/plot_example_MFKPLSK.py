@@ -8,7 +8,7 @@ Use of Multi-Fidelity Kriging Partial Least Squares K
 from smt.applications import MFKPLSK,NestedLHS
 import numpy as np
 import otsmt
-
+import openturns as ot
 # %%
 # | Definition of Initial data
 
