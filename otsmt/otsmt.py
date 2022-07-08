@@ -36,6 +36,18 @@ class smt2ot(object):
         self.smtModel = model
         
 
+    def __computegradient(self,x):
+        """
+        Function that makes a loop on smt predict_derivatives
+
+        """        
+
+        y = np.zeros((len(x),self.inputDimension))
+        for i in range(self.inputDimension):
+            y[:,i] = self.smtModel.predict_derivatives(x,i).T[0]  
+        return y
+        
+        
 
     def getPredictionFunction(self):
         """
@@ -64,17 +76,17 @@ class smt2ot(object):
         return ConditionalVarianceFunction
     
     
-    def getPredictionDerivativesFunction(self,indexDerivatives):
+    def getPredictionDerivativesFunction(self):
         """
-        Function retrieving predicted  derivatives function  of smt model (when available)
-
-		:indexDerivatives: integer, coordinate of the derivative to be computed
+        Function retrieving predicted gradient function of smt model (when available)
         
         """
 
         # definition of ot PythonFunction for predicted response variances
-        smtMeanDerivatives = lambda x:self.smtModel.predict_derivatives(np.array(x),indexDerivatives)
-        PredictionDerivativesFunction = ot.PythonFunction(self.inputDimension,1,func_sample=smtMeanDerivatives)
+        smtMeanDerivatives = lambda x:self.__computegradient(np.array(x))
+        
+        
+        PredictionDerivativesFunction = ot.PythonFunction(self.inputDimension,self.inputDimension,func_sample=smtMeanDerivatives)
 
         return PredictionDerivativesFunction
             
