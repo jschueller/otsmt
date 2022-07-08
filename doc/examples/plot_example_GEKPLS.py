@@ -53,7 +53,7 @@ sm_gekpls.train()
 otgekpls = otsmt.smt2ot(sm_gekpls)
 otgekplsprediction = otgekpls.getPredictionFunction()
 otgekplsvariances = otgekpls.getConditionalVarianceFunction()
-otgekplsgradient = otgekpls.getPredictionDerivativesFunction(0)
+otgekplsgradient = otgekpls.getPredictionDerivativesFunction()
 
 print('Predicted values by GEKPLS:',otgekplsprediction(xv))    
 print('Predicted variances values by GEKPLS:',otgekplsvariances(xv))    
